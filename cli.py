@@ -30,6 +30,13 @@ from speedcam.pipeline import RunConfig, export_csv, export_json, run
 from speedcam.poles import detect_poles
 from speedcam.video import estimate_background, resolve_source
 
+# Windows konsoly (cp1252) "→" we türkmen harplaryny çap edip bilmeýär — UTF-8-e geçirýäris
+for _s in (sys.stdout, sys.stderr):
+    try:
+        _s.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
+
 
 def parse_floats(s: str) -> list[float]:
     return [float(x) for x in s.replace(";", ",").split(",") if x.strip()]

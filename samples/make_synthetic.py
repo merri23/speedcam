@@ -12,8 +12,17 @@ import argparse
 import math
 from pathlib import Path
 
+import sys
+
 import cv2
 import numpy as np
+
+# Windows konsoly (cp1252) "→" we türkmen harplaryny çap edip bilmeýär — UTF-8-e geçirýäris
+for _s in (sys.stdout, sys.stderr):
+    try:
+        _s.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
 
 W, H, FPS = 1280, 720, 30.0
 POLES_X = [220, 500, 780, 1060]          # пиксели

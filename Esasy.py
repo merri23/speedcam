@@ -27,6 +27,13 @@ import time
 import urllib.request
 from pathlib import Path
 
+# Windows konsoly (cp1252) "→" we türkmen harplaryny çap edip bilmeýär — UTF-8-e geçirýäris
+for _s in (sys.stdout, sys.stderr):
+    try:
+        _s.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
+
 APP_TITLE = "SpeedCam — awtoulagyň sütünleriň arasyndaky tizligi"
 HOST = "127.0.0.1"
 

@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write   # tag bilen Release döretmek üçin
 
+env:
+  PYTHONUTF8: "1"          # Windows konsoly: UTF-8 (türkmen harplary, "→")
+  PYTHONIOENCODING: utf-8
+
 jobs:
   build-windows:
     runs-on: windows-latest
