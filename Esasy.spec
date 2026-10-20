@@ -30,12 +30,14 @@ hiddenimports = [
     "cli", "speedcam", "speedcam.color", "speedcam.detector", "speedcam.paths", "speedcam.pipeline",
     "speedcam.poles", "speedcam.speed", "speedcam.video",
     # app.py streamlit tarapyndan exec edilýär — onuň importlaryny aýdyň görkezýäris
-    "pandas", "plotly", "plotly.express", "cv2", "numpy",
+    "pandas", "plotly", "plotly.express", "cv2", "numpy", "torch", "torchvision", "torchvision.ops",
     "streamlit.web.bootstrap", "streamlit.runtime.scriptrunner.magic_funcs",
 ]
 
 # Streamlit (static faýllar, konfig), ultralytics (cfg/*.yaml, tracker yaml), plotly (json şablonlary)
-for pkg in ("streamlit", "ultralytics", "plotly", "lap", "narwhals"):
+# torchvision: C-giňeltmesi (_C.pyd, "torchvision::nms") hökman doly ýygnalmaly — ýogsam
+# frozen exe-de "RuntimeError: operator torchvision::nms does not exist" (Windows)
+for pkg in ("streamlit", "ultralytics", "plotly", "lap", "narwhals", "torchvision"):
     try:
         d, b, h = collect_all(pkg)
         datas += d

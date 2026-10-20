@@ -79,6 +79,8 @@ class YoloDetector:
         imgsz: int = 640,
         device: Optional[str] = None,
     ):
+        import torch  # noqa: F401  (tertip möhüm: torch → torchvision → ultralytics; frozen exe üçin)
+        import torchvision  # noqa: F401
         from ultralytics import YOLO  # импорт здесь, чтобы MotionDetector работал без torch
 
         from .paths import resolve_model

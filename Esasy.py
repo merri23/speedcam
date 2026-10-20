@@ -179,8 +179,16 @@ def selftest() -> int:
     from speedcam.pipeline import RunConfig  # noqa: F401
     from speedcam.poles import detect_poles
 
+    import torch
+    import torchvision
+
+    has_ops = torchvision.extension._has_ops()   # _C.pyd ýüklendimi (nms operatory)
     model_path = resolve_model("yolov8n.pt")
     print(f"[selftest] python {sys.version.split()[0]}  streamlit {streamlit.__version__}  cv2 {cv2.__version__}")
+    print(f"[selftest] torch {torch.__version__}  torchvision {torchvision.__version__}  C-ops={has_ops}")
+    if not has_ops:
+        print("[selftest] FAIL: torchvision C-giňeltmesi (_C) ýüklenmedi — Esasy.spec-de torchvision ýygnalyşyny barlaň")
+        return 1
     print(f"[selftest] model: {model_path}  exists={Path(model_path).is_file()}")
     det = build_detector("yolo", model=model_path)
     frame = np.zeros((480, 640, 3), np.uint8)
