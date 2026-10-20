@@ -204,8 +204,7 @@ def main() -> int:
         return selftest()
     if "--cli" in sys.argv:            # Esasy.exe --cli --source 0 --config calibration.json --show
         bundle = _bundle_dir()
-        os.chdir(str(bundle))
-        sys.path.insert(0, str(bundle))
+        sys.path.insert(0, str(bundle))   # chdir ETMEÝÄRIS: --source/--csv ýollary ulanyjynyň papkasyna görä
         import cli
 
         args = [x for x in sys.argv[1:] if x != "--cli"]
