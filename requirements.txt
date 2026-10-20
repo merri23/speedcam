@@ -1,0 +1,15 @@
+# Основное
+opencv-python>=4.8
+numpy>=1.24
+pandas>=2.0
+
+# Нейросеть (YOLO + трекер ByteTrack). Тянет torch — первая установка ~1–2 ГБ.
+ultralytics>=8.1
+lap>=0.5.12
+
+# Веб-интерфейс
+streamlit>=1.30
+plotly>=5.18
+
+# Esasy.exe ýygnamak üçin (diňe Windows-da / GitHub Actions-da gerek):
+#   pip install pyinstaller pywebview

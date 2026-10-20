@@ -1,0 +1,15 @@
+.venv/
+.venv-build/
+__pycache__/
+*.pyc
+build/
+dist/
+*.spec.bak
+yolov8*.pt
+yolo11*.pt
+samples/synthetic.mp4
+samples/realistic.mp4
+samples/yolo_frame150.jpg
+runs/
+*.log
+.DS_Store
